@@ -1,0 +1,35 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.search-container {
+    text-align: center;
+}
+
+.search-bar {
+    text-align: center;
+    width: 75%;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid #82E0AA;
+    border-radius: 5px 0 0 5px;
+    outline: #2ECC71;
+}
+
+.search-button {
+    position: relative;
+    top: -1px;
+    left: -1px;
+    height: 34px;
+    width: 100px;
+    font-size: 15px;
+    color: #A6ACAF;
+    background: #FFF;
+    border: 1px solid #82E0AA;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-button:hover {
+    color:#58D68D;
+}
