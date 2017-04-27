@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const ALPHA_VANTAGE_API_KEY = '4WJU';
-const ROOT_URL = ''
+const QUANDL_API_KEY = 'b8Z3NXgmTmARUMxs6rUe';
+const END_DATE = '2017-01-01'; //YYYY-MM-DD
+// const ROOT_URL = `https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?api_key=${QUANDL_API_KEY}`;
 
 class SearchBar extends Component {
     constructor(props) {
@@ -16,32 +17,30 @@ class SearchBar extends Component {
 
     //retrieve quote data related to stock
     fetchStockQuote(symbol) {
-        const url = 
-        axios.get(ROOT_URL, {
-            params: {
-                symbol:symbol
-            }   
-        }).then(response=> {
-            console.log(response);        
-        }).error(error => {
+        let url = `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=${END_DATE}&api_key=${QUANDL_API_KEY}`;
+        axios.get(url)
+        .then(response=> {
+            console.log(response);    
+            this.props.stockData(response); //return data back to parent through callback
+        }).catch(error => {
             console.log(error);
+            this.props.stockData({'error':'Stock Data Unavaliable'});
         })
     }
-
 
     onInputChange(event) {
         this.setState({term:event.target.value});
     }
 
-
     onFormSubmit(event) {
         event.preventDefault();
         //search stock quote
-        // this.fetchStockQuote(this.state.term);  //search stock quote
+        this.fetchStockQuote(this.state.term);  //search stock quote
+        // console.log('data' + sample);
 
-        //testing
-        let data = [1,2,3,4,5];
-        this.props.stockData(data);
+        // //testing
+        // let data = [1,2,3,4,5];
+        // this.props.stockData(data);
         this.setState({term: ''});
     }
 

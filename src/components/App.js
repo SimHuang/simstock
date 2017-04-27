@@ -8,7 +8,7 @@ class App extends Component {
 
         this.state = {
             symbol: '',
-            data: []
+            data: {}
         }
     }
 
