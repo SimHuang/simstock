@@ -1,5 +1,5 @@
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif
 }
 .search-container {
     text-align: center;
@@ -10,9 +10,9 @@ body {
     width: 75%;
     height: 30px;
     font-size: 15px;
-    border: 1px solid #82E0AA;
+    border: 1px solid #3ACFCF;
     border-radius: 5px 0 0 5px;
-    outline: #2ECC71;
+    outline: #3ACFCF;
 }
 
 .search-button {
@@ -24,14 +24,14 @@ body {
     font-size: 15px;
     color: #A6ACAF;
     background: #FFF;
-    border: 1px solid #82E0AA;
+    border: 1px solid #3ACFCF;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     outline: none;
 }
 
 .search-button:hover {
-    color:#58D68D;
+    color:#3ACFCF;
 }
 
 .chart-visible {
