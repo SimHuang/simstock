@@ -33,3 +33,11 @@ body {
 .search-button:hover {
     color:#58D68D;
 }
+
+.chart-visible {
+    display: block;
+}
+
+.chart-hide {
+    display: none;
+}

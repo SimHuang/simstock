@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const QUANDL_API_KEY = 'b8Z3NXgmTmARUMxs6rUe';
-const END_DATE = '2017-01-01'; //YYYY-MM-DD
+const START_DATE = '2017-01-01'; //YYYY-MM-DD
 // const ROOT_URL = `https://www.quandl.com/api/v3/datasets/WIKI/FB/data.json?api_key=${QUANDL_API_KEY}`;
 
 class SearchBar extends Component {
@@ -17,7 +17,7 @@ class SearchBar extends Component {
 
     //retrieve quote data related to stock
     fetchStockQuote(symbol) {
-        let url = `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=${END_DATE}&api_key=${QUANDL_API_KEY}`;
+        let url = `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?column_index=4&start_date=${START_DATE}&api_key=${QUANDL_API_KEY}`;
         axios.get(url)
         .then(response=> {
             console.log(response);    
@@ -36,11 +36,6 @@ class SearchBar extends Component {
         event.preventDefault();
         //search stock quote
         this.fetchStockQuote(this.state.term);  //search stock quote
-        // console.log('data' + sample);
-
-        // //testing
-        // let data = [1,2,3,4,5];
-        // this.props.stockData(data);
         this.setState({term: ''});
     }
 

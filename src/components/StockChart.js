@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Chart from 'chart.js'
+import LineChart from './LineChart';
 
 class StockChart extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class StockChart extends Component {
     }
 
     //parse stock data property from props.data
-    renderStockMetaData() {
+    retrieveStockMetaData() {
         if(this.props.data.data) {
             const stock = this.props.data.data.dataset;
             let meta = {};
@@ -23,46 +24,41 @@ class StockChart extends Component {
         return null;
     }
 
-    //construct chart to display data
-    renderChart() {
-        //TODO:contruct chart
-        // let context = document.getElementById('stock-chart');
-        // var scatterChart = new Chart(context, {
-        //     type: 'line',
-        //     data: {
-        //         datasets: [{
-        //             label: 'Scatter Dataset',
-        //             data: [{
-        //                 x: -10,
-        //                 y: 0
-        //             }, {
-        //                 x: 0,
-        //                 y: 10
-        //             }, {
-        //                 x: 10,
-        //                 y: 5
-        //             }]
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             xAxes: [{
-        //                 type: 'linear',
-        //                 position: 'bottom'
-        //             }]
-        //         }
-        //     }
-        // });
-    }
+    //construct object with date array and price array
+    retrieveStockPriceData() {
+        if(this.props.data.data) {
+            let priceToDate = {
+                price: [],
+                date: []
+            };
+            let priceData = this.props.data.data.dataset.data;
+            priceData.forEach((dayPrice) => {
+                priceToDate.date.push(dayPrice[0]);
+                priceToDate.price.push(dayPrice[1]);
+            });
+            console.log(priceData);
+            return priceData;
+        }
+        return null;
+    } 
 
     render() {
-        const meta = this.renderStockMetaData();
+        const meta = this.retrieveStockMetaData();
+        const priceData = this.retrieveStockPriceData();
+        let chartClass = meta ? 'chart-visible' : 'chart-hide';
+  
+        /*if no data initial render only */
         if(!meta) {
             return (
-                <div>Enter data</div>
+                <div className={chartClass}>
+                    <LineChart />
+                </div>
             )
         }
+        console.log('price' + priceData.price);
+        console.log(priceData.date);
         return (
+                  
             <div className="chart-container">
                 <div id="chart-meta">
                     <div>Ticker: {meta.ticker}</div>
@@ -70,9 +66,8 @@ class StockChart extends Component {
                     <div>Start Date: {meta.startDate}</div>
                     <div>End Date: {meta.endDate}</div>
                 </div>
-                <div id="chart-view">
-                    <canvas id="stock-chart" width="800" height="600"></canvas>
-                    {this.renderChart()};
+                <div className={chartClass}>
+                    <LineChart/>
                 </div>
             </div>
         )
