@@ -1,5 +1,6 @@
 body {
-    font-family: 'Franklin Gothic Medium', Arial, sans-serif
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    color: #A6ACAF;
 }
 .search-container {
     text-align: center;
@@ -34,10 +35,7 @@ body {
     color:#3ACFCF;
 }
 
-.chart-visible {
-    display: block;
-}
-
-.chart-hide {
-    display: none;
+#message {
+    text-align: center;
+    margin: auto;
 }

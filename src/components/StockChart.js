@@ -45,10 +45,10 @@ class StockChart extends Component {
 
     render() {
         const meta = this.retrieveStockMetaData();
-        const priceData = meta ? this.retrieveStockPriceData() : [[0,0]];   //initially empty array
+        let priceData = meta ? this.retrieveStockPriceData() : [[0,0]];   //initially empty array
 
         //contains the array of date points
-        const dateSet = priceData.map((date) => {
+        let dateSet = priceData.map((date) => {
             return date[0];
         })
 
@@ -59,8 +59,9 @@ class StockChart extends Component {
         /*if no data initial render only */
         if(!meta) {
             return (
-                <div>
-                    <LineChart dataSet={dateSet} valueSet={valueSet} ticker="None"/>
+                <div id="message">
+                    {/*<LineChart dataSet={dateSet} valueSet={valueSet} ticker="None"/>*/}
+                    NO DATA FOUND! :(
                 </div>
             )
         }
@@ -68,14 +69,10 @@ class StockChart extends Component {
         console.log(priceData.date);
         return (
             <div className="chart-container"> 
-                <h3>{meta.ticker}</h3>
+                <h3>{meta.name.split(')')[0] + ')'}</h3>
+                <h5>Start To Now: {meta.startDate} - {meta.endDate}</h5>
                 <div className>
                     <LineChart dateSet={dateSet} valueSet={valueSet} ticker={meta.ticker}/>
-                </div>
-                <div id="chart-meta">
-                    <div>Name: {meta.name}</div>
-                    <div>Start Date: {meta.startDate}</div>
-                    <div>End Date: {meta.endDate}</div>
                 </div>
             </div>
         )

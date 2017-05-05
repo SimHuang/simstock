@@ -13,11 +13,13 @@ class LineChart extends Component {
 
     //component will recieve the latest data
     componentWillReceiveProps(nextProps) {
-        this.myChart.data.labels = nextProps.dateSet;
-        this.myChart.data.data = nextProps.valueSet;
+        //TODO:error updating the labels
+        // this.myChart.data.labels = nextProps.dataSet;
+        this.myChart.data.datasets[0].data = nextProps.valueSet;
         this.myChart.update();
     }
 
+    //inject the chart after component render
     componentDidMount() {
         let ctx = document.getElementById('stock-chart');
         
