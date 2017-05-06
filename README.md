@@ -6,6 +6,7 @@ React Application to display year to date stock prices based on user input stock
 - Chart js
 - Babel
 - Webpack
+- Axios for AJAX request
 - HTML5/CSS3
 - Quandl Stock Data API
 
