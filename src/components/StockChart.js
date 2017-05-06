@@ -37,7 +37,7 @@ class StockChart extends Component {
                 priceToDate.price.push(dayPrice[1]);
             });
             priceData = priceData.reverse();
-            console.log(priceData);
+            // console.log(priceData);
             return priceData;
         }
         return null;
@@ -65,8 +65,8 @@ class StockChart extends Component {
                 </div>
             )
         }
-        console.log('price' + priceData.price);
-        console.log(priceData.date);
+        // console.log('price' + priceData.price);
+        // console.log(priceData.date);
         return (
             <div className="chart-container"> 
                 <h3>{meta.name.split(')')[0] + ')'}</h3>

@@ -20,10 +20,10 @@ class SearchBar extends Component {
         let url = `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?column_index=4&start_date=${START_DATE}&api_key=${QUANDL_API_KEY}`;
         axios.get(url)
         .then(response=> {
-            console.log(response);    
+            // console.log(response);    
             this.props.stockData(response); //return data back to parent through callback
         }).catch(error => {
-            console.log(error);
+            // console.log(error);
             this.props.stockData({'error':'Stock Data Unavaliable'});
         })
     }

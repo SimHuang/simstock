@@ -1,6 +1,8 @@
-body {
+html,body {
     font-family: 'Franklin Gothic Medium', Arial, sans-serif;
     color: #A6ACAF;
+    height: 100%;
+    background: #404241;
 }
 .search-container {
     text-align: center;
@@ -24,7 +26,7 @@ body {
     width: 100px;
     font-size: 15px;
     color: #A6ACAF;
-    background: #FFF;
+    background: #404241;
     border: 1px solid #3ACFCF;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
@@ -35,7 +37,21 @@ body {
     color:#3ACFCF;
 }
 
+#app div{
+    height: 100%;
+}
+
 #message {
+    color: #3E3E3E;
     text-align: center;
     margin: auto;
+    height: 90%;
+    font-size: 100px;
+    position: relative;
+    top: 200px;
+}
+
+input {
+    background: #404241;
+    color: #A6ACAF;
 }
